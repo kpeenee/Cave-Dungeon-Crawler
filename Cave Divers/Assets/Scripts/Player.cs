@@ -17,6 +17,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayerLook();
+
+    }
+
+    private void PlayerLook()
+    {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -24,6 +30,5 @@ public class Player : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90, 90);
         cam.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-
     }
 }
