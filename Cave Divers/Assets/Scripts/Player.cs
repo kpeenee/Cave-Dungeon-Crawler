@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,19 +7,30 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField] float mouseSensitivity = 1000f;
+    [SerializeField] float moveSpeed = 12f;
     [SerializeField] Transform cam;
-    private float xRotation = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    CharacterController control;
+    private float xRotation = 0f;
+
+    private void Awake()
+    {
+        control = GetComponent<CharacterController>();
+    }
     void Update()
     {
         PlayerLook();
+        Move();
+    }
 
+    private void Move()
+    {
+        float xMov = Input.GetAxis("Horizontal");
+        float yMov = Input.GetAxis("Vertical");
+
+        Vector3 movement = transform.right * xMov + transform.forward * yMov;
+
+        control.Move(movement * moveSpeed * Time.deltaTime);
     }
 
     private void PlayerLook()
