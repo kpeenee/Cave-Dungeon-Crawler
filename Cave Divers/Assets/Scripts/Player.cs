@@ -36,10 +36,16 @@ public class Player : MonoBehaviour
         //Check if grounded
         isGrounded = Physics.CheckSphere(groundCheck.position, checkRadius, whatIsGround);
         //If grounded set fall velocity to small number 
-        if(isGrounded == true)
+        if(isGrounded == true && fallVelocity.y <= 0)
         {
             fallVelocity.y = -2f;
         }
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        {
+            fallVelocity.y = 5f;
+            Debug.Log("Yes");
+        }
+
         //Deal with WASD movement
         float xMov = Input.GetAxis("Horizontal");
         float yMov = Input.GetAxis("Vertical");
