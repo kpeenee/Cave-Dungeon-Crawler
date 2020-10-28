@@ -70,9 +70,11 @@ public class Player : MonoBehaviour
 
     private void PlayerLook()
     {
+        //Get mouse movement
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
+        //Move Camera
         transform.Rotate(Vector3.up * mouseX);
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90, 90);

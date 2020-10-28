@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PrimaryWeapon : Weapon
@@ -12,7 +13,11 @@ public class PrimaryWeapon : Weapon
 
         if(Physics.Raycast(ray,out hit, data.range))
         {
-            Debug.Log("something has been hit");
+            Health objectHealth = hit.transform.GetComponent<Health>();
+            if (objectHealth != null)
+            {
+                objectHealth.takeDamage(data.damage);
+            }
         }
     }
 }
