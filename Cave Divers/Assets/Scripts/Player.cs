@@ -10,10 +10,13 @@ public class Player : MonoBehaviour
     [Header("Looking around")]
     [SerializeField] float mouseSensitivity = 1000f;
     [SerializeField] Transform cam;
+    [SerializeField] Transform primaryPoint;
     [Header("Ground Checking")]
     [SerializeField] Transform groundCheck;
     [SerializeField] float checkRadius = 0.01f;
     [SerializeField] LayerMask whatIsGround;
+    [Header("Weapons")]
+    [SerializeField] PrimaryWeapon currentPrimary;
 
     CharacterController control;
     private float xRotation = 0f;
@@ -24,11 +27,17 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         control = GetComponent<CharacterController>();
+        var newWeapon = Instantiate(currentPrimary, primaryPoint.position, Quaternion.identity);
+        newWeapon.transform.parent = primaryPoint.transform;
     }
     void Update()
     {
         PlayerLook();
         Move();
+        if (Input.GetMouseButtonDown(0))
+        {
+            currentPrimary.Attack();
+        }
     }
 
     private void Move()
