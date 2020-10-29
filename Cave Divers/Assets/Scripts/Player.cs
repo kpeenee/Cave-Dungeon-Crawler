@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         control = GetComponent<CharacterController>();
-        var newWeapon = Instantiate(currentPrimary, primaryPoint.position, Quaternion.identity);
-        newWeapon.transform.parent = primaryPoint.transform;
+        currentPrimary = Instantiate(currentPrimary, primaryPoint.position, Quaternion.Euler(new Vector3(-72.5f,0f,0f)));
+        currentPrimary.transform.parent = primaryPoint.transform;
     }
     void Update()
     {

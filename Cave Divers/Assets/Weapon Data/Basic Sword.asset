@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Basic Sword
   damage: 5.5
-  range: 4
+  range: 2
   attackSpeed: 3
