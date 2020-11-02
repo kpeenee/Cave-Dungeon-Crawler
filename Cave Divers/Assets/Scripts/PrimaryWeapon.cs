@@ -10,7 +10,6 @@ public class PrimaryWeapon : Weapon
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        
     }
 
     public override void Attack()
