@@ -11,12 +11,14 @@ public class Player : MonoBehaviour
     [SerializeField] float mouseSensitivity = 1000f;
     [SerializeField] Transform cam;
     [SerializeField] Transform primaryPoint;
+    [SerializeField] Transform projectilePoint;
     [Header("Ground Checking")]
     [SerializeField] Transform groundCheck;
     [SerializeField] float checkRadius = 0.01f;
     [SerializeField] LayerMask whatIsGround;
     [Header("Weapons")]
     [SerializeField] PrimaryWeapon currentPrimary;
+    [SerializeField] Projectile currentProjectile;
 
     CharacterController control;
     private float xRotation = 0f;
@@ -37,6 +39,10 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             currentPrimary.Attack();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Instantiate(currentProjectile, projectilePoint.position, projectilePoint.rotation);
         }
     }
 
