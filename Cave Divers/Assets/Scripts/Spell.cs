@@ -13,13 +13,17 @@ public class Spell : Projectile
     {
         transform.position += transform.forward * projectileSpeed * Time.deltaTime;
     }
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(!collision.gameObject.CompareTag("Player"))
+        if (!other.gameObject.CompareTag("Player"))
         {
+            Health enemyHealth = other.gameObject.GetComponent<Health>();
+            if (enemyHealth != null)
+            {
+                Debug.Log("Dealt " + damage);
+                enemyHealth.takeDamage(damage);
+            }
             Destroy(gameObject);
         }
-        
     }
 }
