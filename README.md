@@ -24,4 +24,5 @@ For this project im going to be using
 - Blender v2.81
 - FL Studio 20
 - GIMP 2.10.22
+
 All of these programs will be used to code and create assets such as 3D models and sounds for the game.
