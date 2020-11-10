@@ -15,3 +15,13 @@ For my game I would like to create a 3D fantasy dungeon crawler with a focus on 
 casual or hardcore. I would like the game to be different evertime the player plays it through some sort of procedural level generation and different items on each run. 
 To set this game aside from other ***Roguelikes*** I plan on maing it so the main player is also random each time you play, so on one run of the game you could be playing
 as a knight charging head first into the enemies but then on the next run you could be a mage casting spells and keeping your distance. 
+
+# Technology im using
+For this project im going to be using
+- Unity 2020.1.11f1 ***(May be changed as new versions come out)***
+- Visual Studio 2019
+- Audacity
+- Blender v2.81
+- FL Studio 20
+- GIMP 2.10.22
+All of these programs will be used to code and create assets such as 3D models and sounds for the game.
