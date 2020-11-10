@@ -18,7 +18,7 @@ as a knight charging head first into the enemies but then on the next run you co
 
 # Technology im using
 For this project im going to be using
-- Unity 2020.1.11f1 ***(May be changed as new versions come out)***
+- Unity 2020.1.11f1 ***(May upgrade as new versions come out)***
 - Visual Studio 2019
 - Audacity
 - Blender v2.81
@@ -26,3 +26,17 @@ For this project im going to be using
 - GIMP 2.10.22
 
 All of these programs will be used to code and create assets such as 3D models and sounds for the game.
+
+# Main features
+- Procedural generated levels
+- Permadeath
+- First person combat
+- At least 30 weapons with different stats and effects
+- Leveling up and skill trees unique to each character
+- At least 20 different enemies and many bosses to fight
+
+# Aim
+By christmas I hope to have the generation of my levels set up with a playable prototype creating one level. 
+The one level that gets created should show off the key features of the game like the combat and variety of items.
+
+After christmas the main focus will be on creating many new items and skills for the player to get, as well as creating the rest of the levels.
