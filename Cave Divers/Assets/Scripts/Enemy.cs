@@ -7,9 +7,12 @@ public class Enemy : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform playerPos;
+    public LayerMask isPlayer;
+    public float radius = 5f;
 
     private IEnemyState currentState;
     public PatrolState patrol = new PatrolState();
+    public ChaseState chase = new ChaseState();
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentState.DoStateAction(this);
+       currentState = currentState.DoStateAction(this);
     }
 }

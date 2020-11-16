@@ -17,7 +17,15 @@ public class PatrolState : IEnemyState
         }
         timer -= Time.deltaTime;
         Debug.Log(targetPoint);
-        return enemy.patrol;
+
+        if (Physics.CheckSphere(enemy.transform.position, enemy.radius, enemy.isPlayer))
+        {
+            return enemy.chase;
+        }
+        else
+        {
+            return enemy.patrol;
+        }
     }
 
     private void PickNewPoint(Enemy enemy)
