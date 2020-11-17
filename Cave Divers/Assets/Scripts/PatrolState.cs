@@ -33,6 +33,7 @@ public class PatrolState : IEnemyState
         float randomX = UnityEngine.Random.Range(-5f,5f);
         float randomZ = UnityEngine.Random.Range(-5f, 5f);
         targetPoint = enemy.transform.position + new Vector3(randomX, 0, randomZ);
+         
         enemy.agent.SetDestination(targetPoint);
     }
 }
