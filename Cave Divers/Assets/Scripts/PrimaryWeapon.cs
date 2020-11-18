@@ -6,10 +6,12 @@ using UnityEngine;
 public class PrimaryWeapon : Weapon
 {
     Animator anim;
+    AudioSource attackSound;
     
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        attackSound = GetComponent<AudioSource>();
     }
 
     public override void Attack()
@@ -39,5 +41,6 @@ public class PrimaryWeapon : Weapon
         {
             anim.SetTrigger("attack");
         }
+        attackSound.Play();
     }
 }
