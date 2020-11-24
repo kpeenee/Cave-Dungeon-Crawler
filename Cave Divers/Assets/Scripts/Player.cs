@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     private Vector3 fallVelocity;
     private bool isGrounded;
 
+    IInteract currentInteract;
+
     private void Awake()
     {
         control = GetComponent<CharacterController>();
@@ -46,8 +48,23 @@ public class Player : MonoBehaviour
         {
             Instantiate(currentProjectile, projectilePoint.position, projectilePoint.rotation);
         }
+        UpdateCurrentInteract();
+        if(currentInteract != null)
+        {
+            currentInteract.Display();
+        }
     }
 
+    private void UpdateCurrentInteract()
+    {
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f,0.5f,0));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, interactRange, isInteract))
+        {
+            currentInteract = hit.collider.GetComponent<IInteract>();
+        }
+        Debug.Log(currentInteract);
+    }
 
     private void Move()
     {
