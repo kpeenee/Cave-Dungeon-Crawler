@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] Transform cam;
     [SerializeField] Transform primaryPoint;
     [SerializeField] Transform projectilePoint;
+    [SerializeField] float interactRange = 8f;
+    [SerializeField] LayerMask isInteract;
     [Header("Ground Checking")]
     [SerializeField] Transform groundCheck;
     [SerializeField] float checkRadius = 0.01f;
@@ -45,6 +47,7 @@ public class Player : MonoBehaviour
             Instantiate(currentProjectile, projectilePoint.position, projectilePoint.rotation);
         }
     }
+
 
     private void Move()
     {

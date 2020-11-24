@@ -16,7 +16,6 @@ public class PatrolState : IEnemyState
             timer = 3f;
         }
         timer -= Time.deltaTime;
-        Debug.Log(targetPoint);
 
         if (Physics.CheckSphere(enemy.transform.position, enemy.radius, enemy.isPlayer))
         {
