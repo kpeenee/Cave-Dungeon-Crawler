@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour, IInteract
 {
-    PrimaryWeapon pickupWeapon;
+    Weapon pickupWeapon;
 
-    [SerializeField] PrimaryWeapon testMethod;
+    [SerializeField] Weapon testMethod;
 
     private void Start()
     {
         setWeapon(testMethod);
     }
-    public void setWeapon(PrimaryWeapon weapon)
+    public void setWeapon(Weapon weapon)
     {
         pickupWeapon = weapon;
         Weapon newWeapon = Instantiate(pickupWeapon, transform.position, Quaternion.identity);
@@ -22,7 +22,9 @@ public class WeaponPickup : MonoBehaviour, IInteract
 
     public void Interact()
     {
-        Debug.Log("Thing should happen");
+        Player player = FindObjectOfType<Player>();
+        player.ChangeWeapon(pickupWeapon);
+        Destroy(gameObject);
     }
 
     public void Display()

@@ -19,8 +19,9 @@ public class Player : MonoBehaviour
     [SerializeField] float checkRadius = 0.01f;
     [SerializeField] LayerMask whatIsGround;
     [Header("Weapons")]
-    [SerializeField] PrimaryWeapon currentPrimary;
+    [SerializeField] Weapon currentPrimary;
     [SerializeField] Projectile currentProjectile;
+    [SerializeField] WeaponPickup createPickup;
 
     CharacterController control;
     private float xRotation = 0f;
@@ -52,7 +53,12 @@ public class Player : MonoBehaviour
         if(currentInteract != null)
         {
             currentInteract.Display();
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                currentInteract.Interact();
+            }
         }
+
     }
 
     private void UpdateCurrentInteract()
@@ -62,6 +68,10 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(ray, out hit, interactRange, isInteract))
         {
             currentInteract = hit.collider.GetComponent<IInteract>();
+        }
+        else
+        {
+            currentInteract = null;
         }
         Debug.Log(currentInteract);
     }
@@ -105,6 +115,16 @@ public class Player : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90, 90);
         cam.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+    }
+
+    public void ChangeWeapon(Weapon newWeapon)
+    {
+        WeaponPickup oldWeapon = Instantiate(createPickup, transform.position + transform.forward * 2, Quaternion.identity);
+        oldWeapon.setWeapon(currentPrimary);
+        Destroy(currentPrimary.gameObject);
+
+        currentPrimary = Instantiate(newWeapon, primaryPoint.position, Quaternion.Euler(new Vector3(-72.5f, 0f, 0f)));
+        currentPrimary.transform.parent = primaryPoint.transform;
     }
 
     private void OnDrawGizmosSelected()
