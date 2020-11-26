@@ -10,4 +10,7 @@ public interface IInteract
 
     //UI display
     void Display();
+
+    //Remove UI
+    void UnDisplay();
 }

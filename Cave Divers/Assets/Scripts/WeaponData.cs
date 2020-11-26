@@ -7,8 +7,8 @@ public abstract class WeaponData : ScriptableObject
 {
     public string weaponName;
     public float damage;
-    public void ShowData()
+    public WeaponData ShowData()
     {
-        Debug.Log("This is the " + weaponName + " It deals " + damage.ToString() + " damage!");
+        return this;
     }
 }

@@ -71,9 +71,12 @@ public class Player : MonoBehaviour
         }
         else
         {
+            if(currentInteract != null)
+            {
+                currentInteract.UnDisplay();
+            }
             currentInteract = null;
         }
-        Debug.Log(currentInteract);
     }
 
     private void Move()

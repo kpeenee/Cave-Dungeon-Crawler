@@ -9,5 +9,4 @@ public class PrimaryWeaponData : WeaponData
     public float range;
     public float attackSpeed;
 
-    
 }
