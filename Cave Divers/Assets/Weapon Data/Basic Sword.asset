@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19383938aed41e24382233b1d029a684, type: 3}
   m_Name: Basic Sword
   m_EditorClassIdentifier: 
-  weaponName: 
-  damage: 0
-  range: 0
-  attackSpeed: 0
+  weaponName: Basic Sword
+  damage: 5.5
+  range: 5
+  attackSpeed: 5
