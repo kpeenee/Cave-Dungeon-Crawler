@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] protected PrimaryWeaponData data;
+    [SerializeField] protected WeaponData data;
 
     public abstract void Attack();
 

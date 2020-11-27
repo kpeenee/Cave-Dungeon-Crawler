@@ -23,7 +23,7 @@ public class WeaponPickup : MonoBehaviour, IInteract
         anim = GetComponent<Animator>();
         weaponTitle.text = weaponsStats.name;
         damageText.text = "Damage:    " + weaponsStats.damage.ToString();
-        rangeText.text = "Range:     999";
+        rangeText.text =  "Range:     " + weaponsStats.range.ToString();
     }
     public void setWeapon(Weapon weapon)
     {
