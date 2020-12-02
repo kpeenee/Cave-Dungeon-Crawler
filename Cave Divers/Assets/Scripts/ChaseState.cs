@@ -9,6 +9,11 @@ public class ChaseState : IEnemyState
     {
         ChasePlayer(enemy);
 
+        if(enemy.anim.GetBool("isWalking") == false)
+        {
+            enemy.anim.SetBool("isWalking", true);
+        }
+
         if (Physics.CheckSphere(enemy.transform.position, enemy.radius,enemy.isPlayer))
         {
             return enemy.chase;

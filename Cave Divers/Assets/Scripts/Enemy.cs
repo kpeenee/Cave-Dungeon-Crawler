@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent agent;
     public Transform playerPos;
     public LayerMask isPlayer;
+    public Animator anim;
     public float radius = 5f;
 
     private IEnemyState currentState;
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         playerPos = FindObjectOfType<Player>().transform;
+        anim = GetComponent<Animator>();
         currentState = patrol;
     }
 
