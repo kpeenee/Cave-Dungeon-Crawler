@@ -653,7 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d68458708e86146b42aea9238471ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testMethod: {fileID: 5035370736268010798, guid: 55daaf6096d58c94b94b0821e853bbac, type: 3}
+  defaultWeapon: {fileID: 5035370736268010798, guid: 55daaf6096d58c94b94b0821e853bbac, type: 3}
   weaponTitle: {fileID: 152077737}
   damageText: {fileID: 2004117542}
   rangeText: {fileID: 836998204}

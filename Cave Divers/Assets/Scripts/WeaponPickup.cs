@@ -8,7 +8,7 @@ public class WeaponPickup : MonoBehaviour, IInteract
 {
     Weapon pickupWeapon;
 
-    [SerializeField] Weapon testMethod;
+    [SerializeField] Weapon defaultWeapon;
     WeaponData weaponsStats;
     Animator anim;
 
@@ -16,20 +16,33 @@ public class WeaponPickup : MonoBehaviour, IInteract
     [SerializeField] TextMeshProUGUI damageText;
     [SerializeField] TextMeshProUGUI rangeText;
 
+    private void Awake()
+    {   
+        anim = GetComponent<Animator>();
+    }
+
     private void Start()
     {
-        setWeapon(testMethod);
-        weaponsStats = pickupWeapon.GetStats();
-        anim = GetComponent<Animator>();
-        weaponTitle.text = weaponsStats.name;
-        damageText.text = "Damage:    " + weaponsStats.damage.ToString();
-        rangeText.text =  "Range:     " + weaponsStats.range.ToString();
+        StartCoroutine(CheckWeapon());
     }
     public void setWeapon(Weapon weapon)
     {
-        pickupWeapon = weapon;
-        Weapon newWeapon = Instantiate(pickupWeapon, transform.position, Quaternion.identity);
-        newWeapon.transform.parent = transform;
+        pickupWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
+        pickupWeapon.transform.parent = transform;
+
+        weaponsStats = pickupWeapon.GetStats();
+        weaponTitle.text = weaponsStats.name;
+        damageText.text = "Damage:    " + weaponsStats.damage.ToString();
+        rangeText.text = "Range:     " + weaponsStats.range.ToString();
+    }
+
+    IEnumerator CheckWeapon()
+    {
+        yield return new WaitForSeconds(0.3f);
+        if(pickupWeapon == null)
+        {
+            setWeapon(defaultWeapon);
+        }
     }
 
     public void Interact()
@@ -41,11 +54,17 @@ public class WeaponPickup : MonoBehaviour, IInteract
 
     public void Display()
     {
-        anim.SetBool("isLooking", true);
+        if (anim != null)
+        {
+            anim.SetBool("isLooking", true);
+        }
     }
 
     public void UnDisplay()
     {
-        anim.SetBool("isLooking", false);
+        if (anim != null)
+        {
+            anim.SetBool("isLooking", false);
+        }
     }
 }
