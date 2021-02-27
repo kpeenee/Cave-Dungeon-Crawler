@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
+    [Header("Type Of Room")]
+    [SerializeField] RoomType roomType;
     [Header("Walls")]
     [SerializeField] Transform leftWall;
     [SerializeField] Transform frontWall;

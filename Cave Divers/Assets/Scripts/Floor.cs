@@ -26,7 +26,8 @@ public class Floor : MonoBehaviour
         GameObject CurrentRoom = Instantiate(room, transform.position, Quaternion.identity);
         CurrentRoom.transform.position = new Vector3(40 * currX, 0, 40 * currY);
         roomGrid[currX, currY] = CurrentRoom.GetComponent<Room>();
-        
+
+        int numOfAttempts = 0;
         for(int i = 0; i< 10; i++)
         {
             bool canMove = false;
@@ -53,11 +54,34 @@ public class Floor : MonoBehaviour
                    canMove = CheckPos(currX, currY + 1);
                    if(canMove == true) { currY++; }
                 }
+
+                numOfAttempts++;
+                if(canMove == false && numOfAttempts > 50)
+                {
+                    if(currX + 1 < roomGrid.GetLength(0))
+                    {
+                        currX++;
+                    }
+                    else
+                    {
+                        currX--;
+                    }
+                    if(currY + 1 < roomGrid.GetLength(1))
+                    {
+                        currY++;
+                    }
+                    else
+                    {
+                        currY--;
+                    }
+                    numOfAttempts = 0;
+                }
             }
 
             CurrentRoom = Instantiate(room, transform.position, Quaternion.identity);
             CurrentRoom.transform.position = new Vector3(40 * currX, 0, 40 * currY);
             roomGrid[currX, currY] = CurrentRoom.GetComponent<Room>();
+            numOfAttempts = 0;
         }
     }
 
