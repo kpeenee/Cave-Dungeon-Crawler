@@ -2,33 +2,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.AI;
 
 public class Floor : MonoBehaviour
 {
     [SerializeField] int minRooms;
     [SerializeField] int maxRooms;
     [SerializeField] GameObject room;
-    private Room[,] roomGrid = new Room[10,5];
+    [SerializeField] GameObject startRoom;
+    private Room[,] roomGrid = new Room[10,10];
+    int currX = 5;
+    int currY = 5;
 
     void Start()
     {
+        PlaceStartRoom();
         GenerateMainPath();
         RemoveWalls();
+        GenerateNavMesh();
     }
 
-    
+   
+
+    private void PlaceStartRoom()
+    {
+        GameObject currentRoom = Instantiate(startRoom, transform.position, Quaternion.identity);
+        currentRoom.transform.position = new Vector3(40 * currX, 0, 40 * currY);
+        roomGrid[currX, currY] = currentRoom.GetComponent<Room>();
+    }
 
     private void GenerateMainPath()
     {
-        int currX = 4;
-        int currY = 2;
-
-        GameObject CurrentRoom = Instantiate(room, transform.position, Quaternion.identity);
-        CurrentRoom.transform.position = new Vector3(40 * currX, 0, 40 * currY);
-        roomGrid[currX, currY] = CurrentRoom.GetComponent<Room>();
+        GameObject currentRoom;
 
         int numOfAttempts = 0;
-        for(int i = 0; i< 10; i++)
+        for(int i = 0; i< 30; i++)
         {
             bool canMove = false;
             while (canMove == false)
@@ -78,9 +86,9 @@ public class Floor : MonoBehaviour
                 }
             }
 
-            CurrentRoom = Instantiate(room, transform.position, Quaternion.identity);
-            CurrentRoom.transform.position = new Vector3(40 * currX, 0, 40 * currY);
-            roomGrid[currX, currY] = CurrentRoom.GetComponent<Room>();
+            currentRoom = Instantiate(room, transform.position, Quaternion.identity);
+            currentRoom.transform.position = new Vector3(40 * currX, 0, 40 * currY);
+            roomGrid[currX, currY] = currentRoom.GetComponent<Room>();
             numOfAttempts = 0;
         }
     }
@@ -135,5 +143,10 @@ public class Floor : MonoBehaviour
         {
             return true;
         }
+    }
+
+    private void GenerateNavMesh()
+    {
+        NavMeshBuilder.BuildNavMesh();
     }
 }
