@@ -229,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2998552054067395115, guid: 547fa998d766c5e46aff1780fd11618e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2998552054067395115, guid: 547fa998d766c5e46aff1780fd11618e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -237,7 +237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2998552054067395115, guid: 547fa998d766c5e46aff1780fd11618e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2998552054067395115, guid: 547fa998d766c5e46aff1780fd11618e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -448,15 +448,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3217c5ab6f6e3040bf9962f7cc707c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  caveCorridoor:
-  - {fileID: 5025619022505541799, guid: 5d64e16b454b50140ba12ab78597edcf, type: 3}
-  - {fileID: 5025619022505541799, guid: 55a4f1ea1628d3b48a1fdebbb8d16af2, type: 3}
-  - {fileID: 5025619022505541799, guid: a5cb8c36450b140488fceff6da6e59ce, type: 3}
-  - {fileID: 5025619022505541799, guid: e87472b7b1263cb448f5a6a39c95d51f, type: 3}
-  - {fileID: 5025619022505541799, guid: 5c7170870b375944399331bec1e29adc, type: 3}
-  caveDeadEnd:
-  - {fileID: 1491458817086912307, guid: 04eb29e0af064f64390f695f0a4e9f76, type: 3}
-  caveTurnLeft:
-  - {fileID: 128183392041628758, guid: a3629107aaecef64f8a93cb3f8a04682, type: 3}
-  caveTurnRight:
-  - {fileID: 1654654035802816187, guid: 2c42960aaf5a0ef44ad37145a6ec2886, type: 3}
+  cavePieces:
+  - {fileID: 4362264867319524371, guid: 43a9524b64490a44c97653cd858d04fa, type: 3}
+  - {fileID: 4362264867319524371, guid: 0fad437000ba75a4793e0656f5a21e60, type: 3}
+  - {fileID: 4362264867319524371, guid: 0c31055d23f714046b11d20a22ab3440, type: 3}
+  - {fileID: 4362264867319524371, guid: 98ced56cde549354388f3358bebeb7b5, type: 3}
+  - {fileID: 4362264867319524371, guid: ead90ca184e62e8448a526e6afd572bf, type: 3}
+  - {fileID: 4362264867319524371, guid: a0ac04f693d34884b9b0ef877bdd16ed, type: 3}
+  - {fileID: 4362264867319524371, guid: 5f7613669c42a604e9543d069cf9ccdb, type: 3}
+  minCorridoorLen: 1
+  maxCorridoorLen: 8
+  genAmount: 20

@@ -2,110 +2,137 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEditor.AI;
+    
 public class CaveGenerator : MonoBehaviour
 {
-    [SerializeField] List<GameObject> caveCorridoor = new List<GameObject>();
-    [SerializeField] List<GameObject> caveDeadEnd = new List<GameObject>();
-    [SerializeField] List<GameObject> caveTurnLeft = new List<GameObject>();
-    [SerializeField] List<GameObject> caveTurnRight = new List<GameObject>();
+    [SerializeField] List<GameObject> cavePieces = new List<GameObject>();
+    [SerializeField] int minCorridoorLen = 1;
+    [SerializeField] int maxCorridoorLen = 4;
+    [SerializeField] int genAmount = 5;
 
-    private int xCor = 0;
-    private int yCor = 0;
-    private int rotation = 0;
+    private CavePiece[,] cave = new CavePiece[50,50];
+    private int xCor = 25;
+    private int yCor = 25;
+    Direction dir = Direction.North;
     
 
     private void Start()
     {
         GenerateCave();
+        NavMeshBuilder.BuildNavMesh();
     }
 
     private void GenerateCave()
     {
-        rotation = 180;
-        PlaceDeadEnd();
-        rotation = 0;
-        MoveCor();
-        for(int i = 0; i< 5; i++)
+        for(int i = 0; i<= genAmount; i++)
         {
-            GenCorridoor();
-            GenTurn();
+            CreateCorridoor();
+            dir = ChangeDirection();
         }
-
-
-        PlaceDeadEnd();
+        CheckForDestruction();
     }
 
-    private void GenTurn()
+    
+
+    private Direction ChangeDirection()
     {
-        int chooseDir = UnityEngine.Random.Range(0, 3);
-        if(chooseDir <= 1)
+        float randNum = UnityEngine.Random.Range(0, 2);
+        if(dir == Direction.North|| dir == Direction.South)
         {
-            GameObject cavePiece = Instantiate(caveTurnLeft[0], transform.position, Quaternion.identity);
-            cavePiece.transform.position = new Vector3(8 * xCor, 0, 8 * yCor);
-            cavePiece.transform.rotation = Quaternion.Euler(0, rotation, 0); 
-            rotation -= 90;
-            CheckRotation();
-            MoveCor();
+            if(randNum < 1) { return Direction.West; }
+            else { return Direction.East; }
         }
-        else
-        {
-            GameObject cavePiece = Instantiate(caveTurnRight[0], transform.position, Quaternion.identity);
-            cavePiece.transform.position = new Vector3(8 * xCor, 0, 8 * yCor);
-            cavePiece.transform.rotation = Quaternion.Euler(0, rotation, 0);
-            rotation += 90;
-            CheckRotation();
-            MoveCor();
-        }
+        if(randNum < 1) { return Direction.North; }
+        else { return Direction.South; }
     }
 
-    private void MoveCor()
+    private void CreateCorridoor()
     {
-        if(rotation == 0)
+        int howMany = UnityEngine.Random.Range(minCorridoorLen, maxCorridoorLen);
+        for(int i = 0; i <= howMany; i++)
         {
-            xCor++;
-        }else if(rotation == 90)
-        {
-            yCor--;
-        }else if(rotation == 180)
-        {
-            xCor--;
-        }else if(rotation == 270)
-        {
-            yCor++;
+            if (cave[xCor, yCor] == null)
+            {
+                int RandNum = UnityEngine.Random.Range(0, cavePieces.Count);
+                CavePiece currenPiece = Instantiate(cavePieces[RandNum], transform.position, Quaternion.identity).GetComponent<CavePiece>();
+                currenPiece.transform.position = new Vector3(xCor * 8, 0, yCor * 8);
+                cave[xCor, yCor] = currenPiece;
+                MoveCords();
+            }
+            else
+            {
+                MoveCords();
+            }
         }
     }
 
-    private void CheckRotation()
+    private void CheckForDestruction()
     {
-        if(rotation< 0)
+        for (int i = 0; i < cave.GetLength(0); i++)
         {
-            rotation = 270;
-        }
-        if(rotation > 270)
-        {
-            rotation = 0;
+            for (int j = 0; j < cave.GetLength(1); j++)
+            {
+                if (cave[i, j] != null)
+                {
+                    FindWallsToDestroy(i, j);
+                }
+            }
         }
     }
 
-    private void PlaceDeadEnd()
+    private void FindWallsToDestroy(int i, int j)
     {
-        int ranNumb = UnityEngine.Random.Range(0, caveDeadEnd.Count);
-        GameObject caveEnd = Instantiate(caveDeadEnd[ranNumb], transform.position, Quaternion.identity);
-        caveEnd.transform.position = new Vector3(8 * xCor, 0, 8 * yCor);
-        caveEnd.transform.rotation = Quaternion.Euler(0, rotation, 0);
-        
+        if (i + 1 < cave.GetLength(0))
+        {
+            if (cave[i + 1, j] != null)
+            {
+                cave[i, j].DestroyWall("east");
+            }
+        }
+        if (i - 1 >= 0)
+        {
+            if (cave[i - 1, j] != null)
+            {
+                cave[i, j].DestroyWall("west");
+            }
+        }
+        if (j + 1 < cave.GetLength(1))
+        {
+            if (cave[i, j + 1] != null)
+            {
+                cave[i, j].DestroyWall("north");
+            }
+        }
+        if (j - 1 >= 0)
+        {
+            if (cave[i, j - 1] != null)
+            {
+                cave[i, j].DestroyWall("south");
+            }
+        }
     }
 
-    private void GenCorridoor()
+    private void MoveCords()
     {
-        for (int i = 0; i < 5; i++)
+        if(dir == Direction.North) { xCor++; }
+        else if(dir == Direction.East) { yCor++; }
+        else if(dir == Direction.South) { xCor--; }
+        else if(dir == Direction.West) { yCor--; }
+
+        if(xCor < 0 || xCor >= cave.GetLength(0))
         {
-            int ranNum = UnityEngine.Random.Range(0, caveCorridoor.Count);
-            GameObject cavePiece = Instantiate(caveCorridoor[ranNum], transform.position, Quaternion.identity);
-            cavePiece.transform.position = new Vector3(8 * xCor, 0, 8 * yCor);
-            cavePiece.transform.rotation = Quaternion.Euler(0, rotation, 0);
-            MoveCor();
+            ResetCords();
         }
+        if(yCor < 0 || yCor >= cave.GetLength(1))
+        {
+            ResetCords();
+        }
+    }
+
+    private void ResetCords()
+    {
+        xCor = 25;
+        yCor = 25;
     }
 }
