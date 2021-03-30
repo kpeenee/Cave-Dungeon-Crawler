@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     [SerializeField] float maxHealth;
     private float currentHealth;
     [SerializeField] HealthBar healthBar;
+    public Animator anim;
+
 
     private void Start()
     {
@@ -29,6 +31,7 @@ public class Health : MonoBehaviour
         {
             Die();
         }
+        anim.SetTrigger("hit");
     }
 
     private void Die()

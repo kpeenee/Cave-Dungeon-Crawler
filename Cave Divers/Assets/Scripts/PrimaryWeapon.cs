@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class PrimaryWeapon : Weapon
 {
-    Animator anim;
+   
+    [SerializeField] Animator anim;
     AudioSource attackSound;
     
     private void Awake()
     {
-        anim = GetComponent<Animator>();
         attackSound = GetComponent<AudioSource>();
     }
 
     public override void Attack()
     {
         CheckForHit();
-        PlayAttackAnimation();
+        attackSound.Play();
     }
 
     private void CheckForHit()
@@ -33,14 +33,5 @@ public class PrimaryWeapon : Weapon
                 objectHealth.takeDamage(data.damage);
             }
         }
-    }
-
-    void PlayAttackAnimation()
-    {
-        if (anim.gameObject.activeSelf)
-        {
-            anim.SetTrigger("attack");
-        }
-        attackSound.Play();
     }
 }

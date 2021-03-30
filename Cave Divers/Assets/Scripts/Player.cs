@@ -10,18 +10,14 @@ public class Player : MonoBehaviour
     [Header("Looking around")]
     [SerializeField] float mouseSensitivity = 1000f;
     [SerializeField] Transform cam;
-    [SerializeField] Transform primaryPoint;
-    [SerializeField] Transform projectilePoint;
+   
     [SerializeField] float interactRange = 8f;
     [SerializeField] LayerMask isInteract;
     [Header("Ground Checking")]
     [SerializeField] Transform groundCheck;
     [SerializeField] float checkRadius = 0.01f;
     [SerializeField] LayerMask whatIsGround;
-    [Header("Weapons")]
-    [SerializeField] Weapon currentPrimary;
-    [SerializeField] Projectile currentProjectile;
-    [SerializeField] WeaponPickup createPickup;
+    
 
     CharacterController control;
     private float xRotation = 0f;
@@ -34,21 +30,12 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         control = GetComponent<CharacterController>();
-        currentPrimary = Instantiate(currentPrimary, primaryPoint.position, Quaternion.Euler(new Vector3(-72.5f,0f,0f)));
-        currentPrimary.transform.parent = primaryPoint.transform;
     }
     void Update()
     {
         PlayerLook();
         Move();
-        if (Input.GetMouseButtonDown(0))
-        {
-            currentPrimary.Attack();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            Instantiate(currentProjectile, projectilePoint.position, projectilePoint.rotation);
-        }
+        
         UpdateCurrentInteract();
         if(currentInteract != null)
         {
@@ -120,15 +107,7 @@ public class Player : MonoBehaviour
         cam.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 
-    public void ChangeWeapon(Weapon newWeapon)
-    {
-        WeaponPickup oldWeapon = Instantiate(createPickup, transform.position + transform.forward * 2, Quaternion.identity);
-        oldWeapon.setWeapon(currentPrimary);
-        Destroy(currentPrimary.gameObject);
-
-        currentPrimary = Instantiate(newWeapon, primaryPoint.position, Quaternion.Euler(new Vector3(-72.5f, 0f, 0f)));
-        currentPrimary.transform.parent = primaryPoint.transform;
-    }
+    
 
     private void OnDrawGizmosSelected()
     {

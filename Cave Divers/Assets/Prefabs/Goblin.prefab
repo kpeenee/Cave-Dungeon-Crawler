@@ -519,7 +519,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   anim: {fileID: 0}
-  radius: 5
+  radius: 20
 --- !u!195 &4488195952454885636
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -556,6 +556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   healthBar: {fileID: 4488195951907472881}
+  anim: {fileID: 4488195952454885634}
 --- !u!1 &3843684104587784694
 GameObject:
   m_ObjectHideFlags: 0

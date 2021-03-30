@@ -47,7 +47,7 @@ public class WeaponPickup : MonoBehaviour, IInteract
 
     public void Interact()
     {
-        Player player = FindObjectOfType<Player>();
+        PlayerWeaponManager player = FindObjectOfType<PlayerWeaponManager>();
         player.ChangeWeapon(pickupWeapon);
         Destroy(gameObject);
     }

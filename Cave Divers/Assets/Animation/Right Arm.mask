@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Right Arm
+  m_Mask: 01000000000000000000000000000000000000000100000000000000010000000000000000000000000000000100000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/Arm.L
+    m_Weight: 0
+  - m_Path: Armature/Arm.L/Arm.L_end
+    m_Weight: 0
+  - m_Path: Armature/Arm.R
+    m_Weight: 1
+  - m_Path: Armature/Arm.R/Arm.R_end
+    m_Weight: 1
+  - m_Path: Armature/Elbow.L
+    m_Weight: 0
+  - m_Path: Armature/Elbow.L/Forearm.L
+    m_Weight: 0
+  - m_Path: Armature/Elbow.L/Forearm.L/Wrist.L
+    m_Weight: 0
+  - m_Path: Armature/Elbow.L/Forearm.L/Wrist.L/LeftFinger.L
+    m_Weight: 0
+  - m_Path: Armature/Elbow.L/Forearm.L/Wrist.L/LeftFinger.L/LeftFingerTip.L
+    m_Weight: 0
+  - m_Path: Armature/Elbow.L/Forearm.L/Wrist.L/LeftFinger.L/LeftFingerTip.L/LeftFingerTip.L_end
+    m_Weight: 0
+  - m_Path: Armature/Elbow.L/Forearm.L/Wrist.L/RightFinger.R
+    m_Weight: 0
+  - m_Path: Armature/Elbow.L/Forearm.L/Wrist.L/RightFinger.R/RightFingerTip.R
+    m_Weight: 0
+  - m_Path: Armature/Elbow.L/Forearm.L/Wrist.L/RightFinger.R/RightFingerTip.R/RightFingerTip.R_end
+    m_Weight: 0
+  - m_Path: Armature/Elbow.R
+    m_Weight: 1
+  - m_Path: Armature/Elbow.R/Forearm.R
+    m_Weight: 1
+  - m_Path: Armature/Elbow.R/Forearm.R/Wrist.R
+    m_Weight: 1
+  - m_Path: Armature/Elbow.R/Forearm.R/Wrist.R/LeftFinger.R
+    m_Weight: 1
+  - m_Path: Armature/Elbow.R/Forearm.R/Wrist.R/LeftFinger.R/LeftFingerTip.R
+    m_Weight: 1
+  - m_Path: Armature/Elbow.R/Forearm.R/Wrist.R/LeftFinger.R/LeftFingerTip.R/LeftFingerTip.R_end
+    m_Weight: 1
+  - m_Path: Armature/Elbow.R/Forearm.R/Wrist.R/RightFinger.L
+    m_Weight: 1
+  - m_Path: Armature/Elbow.R/Forearm.R/Wrist.R/RightFinger.L/RightFingerTip.L
+    m_Weight: 1
+  - m_Path: Armature/Elbow.R/Forearm.R/Wrist.R/RightFinger.L/RightFingerTip.L/RightFingerTip.L_end
+    m_Weight: 1
+  - m_Path: Cube
+    m_Weight: 0
