@@ -27,8 +27,8 @@ public class WeaponPickup : MonoBehaviour, IInteract
     }
     public void setWeapon(Weapon weapon)
     {
-        pickupWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
-        pickupWeapon.transform.parent = transform;
+        pickupWeapon = Instantiate(weapon, transform.position, Quaternion.identity, transform);
+        pickupWeapon.transform.localScale = weapon.transform.lossyScale;
 
         weaponsStats = pickupWeapon.GetStats();
         weaponTitle.text = weaponsStats.name;
