@@ -9,6 +9,7 @@ public class PrimaryWeapon : Weapon
     [SerializeField] Animator anim;
     AudioSource attackSound;
     
+    
     private void Awake()
     {
         attackSound = GetComponent<AudioSource>();
