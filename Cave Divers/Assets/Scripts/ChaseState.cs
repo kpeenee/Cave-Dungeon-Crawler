@@ -15,7 +15,11 @@ public class ChaseState : IEnemyState
             enemy.anim.SetBool("isWalking", true);
         }
 
-        if (Physics.CheckSphere(enemy.transform.position, enemy.radius,enemy.isPlayer))
+        if (Physics.CheckSphere(enemy.transform.position, enemy.attackRadius, enemy.isPlayer))
+        {
+            return enemy.attack;
+        }
+        if (Physics.CheckSphere(enemy.transform.position, enemy.chaseRadius,enemy.isPlayer))
         {
             return enemy.chase;
         }

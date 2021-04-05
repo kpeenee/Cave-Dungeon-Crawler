@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] float maxHealth;
     private float currentHealth;
+    [SerializeField] float regenHealthPerSecond = 0.0f;
     [SerializeField] HealthBar healthBar;
     public Animator anim;
     [SerializeField] AudioClip damageSound;
@@ -20,10 +21,31 @@ public class Health : MonoBehaviour
             healthBar.SetMaxHealth(maxHealth);
         }
     }
+
+    private void Update()
+    {
+        if(regenHealthPerSecond > 0)
+        {
+            RegenHealth();
+        }
+    }
+
+    private void RegenHealth()
+    {
+        currentHealth += regenHealthPerSecond * Time.deltaTime;
+        if (healthBar != null)
+        {
+            healthBar.UpdateHealth(currentHealth);
+        }
+    }
+
     public void takeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
-        AudioSource.PlayClipAtPoint(damageSound, transform.position);
+        if (damageSound != null)
+        {
+            AudioSource.PlayClipAtPoint(damageSound, transform.position);
+        }
         if(healthBar != null)
         {
             healthBar.UpdateHealth(currentHealth);
@@ -33,7 +55,10 @@ public class Health : MonoBehaviour
         {
             Die();
         }
-        anim.SetTrigger("hit");
+        if (anim != null)
+        {
+            anim.SetTrigger("hit");
+        }
     }
 
     private void Die()

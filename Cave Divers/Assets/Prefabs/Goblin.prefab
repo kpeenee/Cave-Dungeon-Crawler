@@ -558,6 +558,7 @@ MonoBehaviour:
   maxHealth: 10
   healthBar: {fileID: 4488195951907472881}
   anim: {fileID: 4488195952454885634}
+  damageSound: {fileID: 8300000, guid: 46d9a843cf489fb48a4346df3e91e971, type: 3}
 --- !u!1 &3843684104587784694
 GameObject:
   m_ObjectHideFlags: 0

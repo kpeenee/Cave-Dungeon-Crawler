@@ -17,7 +17,7 @@ public class PatrolState : IEnemyState
         }
         timer -= Time.deltaTime;
 
-        if (Physics.CheckSphere(enemy.transform.position, enemy.radius, enemy.isPlayer))
+        if (Physics.CheckSphere(enemy.transform.position, enemy.chaseRadius, enemy.isPlayer))
         {
             return enemy.chase;
         }
