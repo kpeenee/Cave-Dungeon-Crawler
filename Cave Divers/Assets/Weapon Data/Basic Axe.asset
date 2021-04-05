@@ -15,4 +15,4 @@ MonoBehaviour:
   weaponName: Basic Axe
   damage: 7
   range: 10
-  attackSpeed: 3
+  attackSpeed: 1

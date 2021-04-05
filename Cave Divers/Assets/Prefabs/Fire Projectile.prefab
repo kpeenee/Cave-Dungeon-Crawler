@@ -51,6 +51,7 @@ MonoBehaviour:
   projectileAmount: 1
   damage: 8
   shootSound: {fileID: 8300000, guid: d4bc9bffbf945ca4e948632a04eb4fe3, type: 3}
+  destroyVFX: {fileID: 62907143512246019, guid: b4b6a6cd8a7d7f442acbd2e1d35b0b2b, type: 3}
 --- !u!54 &6283199336770184885
 Rigidbody:
   m_ObjectHideFlags: 0

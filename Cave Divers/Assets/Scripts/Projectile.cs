@@ -9,6 +9,7 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] protected int projectileAmount;
     [SerializeField] protected float damage;
     [SerializeField] protected AudioClip shootSound;
+    [SerializeField] protected GameObject destroyVFX;
 
     protected void Start()
     {

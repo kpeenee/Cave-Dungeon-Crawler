@@ -24,6 +24,8 @@ public class StraightShot : Projectile
                 Debug.Log("Dealt " + damage);
                 enemyHealth.takeDamage(damage);
             }
+            GameObject deathParticle = Instantiate(destroyVFX, transform.position, Quaternion.identity);
+            Destroy(deathParticle, 5.0f);
             Destroy(gameObject);
         }
     }

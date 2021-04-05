@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     private float currentHealth;
     [SerializeField] HealthBar healthBar;
     public Animator anim;
+    [SerializeField] AudioClip damageSound;
 
 
     private void Start()
@@ -22,6 +23,7 @@ public class Health : MonoBehaviour
     public void takeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
+        AudioSource.PlayClipAtPoint(damageSound, transform.position);
         if(healthBar != null)
         {
             healthBar.UpdateHealth(currentHealth);
