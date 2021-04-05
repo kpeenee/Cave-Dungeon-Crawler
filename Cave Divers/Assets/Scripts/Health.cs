@@ -37,6 +37,10 @@ public class Health : MonoBehaviour
         {
             healthBar.UpdateHealth(currentHealth);
         }
+        if(currentHealth > maxHealth) 
+        {
+            currentHealth = maxHealth;
+        }
     }
 
     public void takeDamage(float damageAmount)

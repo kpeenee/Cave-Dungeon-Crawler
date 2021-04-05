@@ -10,6 +10,11 @@ public class PlayerWeaponManager : MonoBehaviour
     [SerializeField] WeaponPickup createPickup;
     [SerializeField] Transform mainPoint;
     [SerializeField] Transform offPoint;
+
+    [Header("WeaponUI")]
+    [SerializeField] WeaponAttackBar mainWeaponAttackBar;
+    [SerializeField] WeaponAttackBar offWeaponAttackBar;
+
     private bool switchRight = true;
     private float mainAttackInterval = 0.0f;
     private float offAttackInterval = 0.0f;
@@ -23,10 +28,28 @@ public class PlayerWeaponManager : MonoBehaviour
         armAnim = arms.GetComponent<Animator>();
         currentMain = Instantiate(currentMain, mainPoint.position, Quaternion.Euler(new Vector3(-72.5f, 0f, 0f)));
         currentMain.transform.parent = mainPoint.transform;
-
+        
         currentOff = Instantiate(currentOff, offPoint.position, Quaternion.Euler(new Vector3(-72.5f, 0f, 0f)));
         currentOff.transform.parent = offPoint.transform;
-        
+    }
+
+    private void Start()
+    {
+        StartCoroutine(SetUp());
+       
+    }
+
+
+    IEnumerator SetUp()
+    {
+        yield return new WaitForSeconds(0.3f);
+        SetUI();
+    }
+
+    private void SetUI()
+    {
+        mainWeaponAttackBar.SetWeaponValues(currentMain.GetStats().attackSpeed);
+        offWeaponAttackBar.SetWeaponValues(currentOff.GetStats().attackSpeed);
     }
 
     // Update is called once per frame
@@ -53,7 +76,9 @@ public class PlayerWeaponManager : MonoBehaviour
             }
         }
         mainAttackInterval -= Time.deltaTime;
+        mainWeaponAttackBar.UpdateValue(mainAttackInterval);
         offAttackInterval -= Time.deltaTime;
+        offWeaponAttackBar.UpdateValue(offAttackInterval);
     }
 
     public void ChangeWeapon(Weapon newWeapon)
@@ -78,5 +103,6 @@ public class PlayerWeaponManager : MonoBehaviour
             currentOff.transform.parent = offPoint.transform;
             switchRight = !switchRight;
         }
+        SetUI();
     }
 }

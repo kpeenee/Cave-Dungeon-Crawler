@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackState : IEnemyState
 {
-    private float timeBTWAttack = 3.0f;
+    private float timeBTWAttack = 0.0f;
     private Health playerHealth;
     public IEnemyState DoStateAction(Enemy enemy)
     {
