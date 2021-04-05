@@ -8,6 +8,12 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] protected float projectileSpeed;
     [SerializeField] protected int projectileAmount;
     [SerializeField] protected float damage;
+    [SerializeField] protected AudioClip shootSound;
+
+    protected void Start()
+    {
+        AudioSource.PlayClipAtPoint(shootSound, transform.position);
+    }
 
     protected abstract void Move();
 }

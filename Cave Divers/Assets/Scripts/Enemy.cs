@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public LayerMask isPlayer;
     public Animator anim;
     public float radius = 5f;
+    public AudioClip chaseSound;
 
     private IEnemyState currentState;
     public PatrolState patrol = new PatrolState();

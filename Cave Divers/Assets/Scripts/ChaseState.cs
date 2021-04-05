@@ -11,6 +11,7 @@ public class ChaseState : IEnemyState
 
         if(enemy.anim.GetBool("isWalking") == false)
         {
+            AudioSource.PlayClipAtPoint(enemy.chaseSound, enemy.transform.position);
             enemy.anim.SetBool("isWalking", true);
         }
 

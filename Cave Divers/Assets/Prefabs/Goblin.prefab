@@ -520,6 +520,7 @@ MonoBehaviour:
     m_Bits: 512
   anim: {fileID: 0}
   radius: 20
+  chaseSound: {fileID: 8300000, guid: e1685b5dc63384f4eb49956d25458081, type: 3}
 --- !u!195 &4488195952454885636
 NavMeshAgent:
   m_ObjectHideFlags: 0
