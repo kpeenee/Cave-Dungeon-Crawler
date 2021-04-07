@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     [SerializeField] HealthBar healthBar;
     public Animator anim;
     [SerializeField] AudioClip damageSound;
+    [SerializeField] GameObject deathVFX;
 
 
     private void Start()
@@ -67,6 +68,11 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
+        if(deathVFX != null)
+        {
+            GameObject deathParticles = Instantiate(deathVFX, transform.position, Quaternion.identity);
+            Destroy(deathParticles, 5.0f);
+        }
         Destroy(gameObject);
     }
 }

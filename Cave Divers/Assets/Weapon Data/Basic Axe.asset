@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Basic Axe
   damage: 7
-  range: 10
+  range: 5
   attackSpeed: 1

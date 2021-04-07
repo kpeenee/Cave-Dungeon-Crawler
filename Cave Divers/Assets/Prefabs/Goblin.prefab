@@ -519,7 +519,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   anim: {fileID: 0}
-  radius: 20
+  chaseRadius: 5
+  attackRadius: 2
+  attackRate: 3
+  attackDamage: 10
   chaseSound: {fileID: 8300000, guid: e1685b5dc63384f4eb49956d25458081, type: 3}
 --- !u!195 &4488195952454885636
 NavMeshAgent:
@@ -531,7 +534,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -556,9 +559,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  regenHealthPerSecond: 0
   healthBar: {fileID: 4488195951907472881}
   anim: {fileID: 4488195952454885634}
   damageSound: {fileID: 8300000, guid: 46d9a843cf489fb48a4346df3e91e971, type: 3}
+  deathVFX: {fileID: 4867899764450587870, guid: bb8db243b1e6f91479b9bea7e0832b9b, type: 3}
 --- !u!1 &3843684104587784694
 GameObject:
   m_ObjectHideFlags: 0
