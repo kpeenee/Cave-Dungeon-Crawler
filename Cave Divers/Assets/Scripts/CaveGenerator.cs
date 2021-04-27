@@ -10,6 +10,9 @@ public class CaveGenerator : MonoBehaviour
     [SerializeField] int minCorridoorLen = 1;
     [SerializeField] int maxCorridoorLen = 4;
     [SerializeField] int genAmount = 5;
+    [SerializeField] int arenaWidth = 3;
+    [SerializeField] int arenaHeight = 3;
+    [SerializeField] GameObject arena;
 
     private CavePiece[,] cave = new CavePiece[50,50];
     private int xCor = 25;
@@ -28,12 +31,47 @@ public class CaveGenerator : MonoBehaviour
         for(int i = 0; i<= genAmount; i++)
         {
             CreateCorridoor();
+            if(i % 5 == 0)
+            {
+                CreateArena();
+            }
             dir = ChangeDirection();
         }
         CheckForDestruction();
     }
 
-    
+    private void CreateArena()
+    {
+        MoveCords();
+        //Save arena midpoint
+        int midX = xCor;
+        int midY = yCor;
+        //Place Cordinates in bottom left of arena
+        xCor--;
+        yCor--;
+        for(int i = 0; i < arenaHeight; i++)
+        {
+            for(int j = 0; j < arenaWidth; j++)
+            {
+                if (cave[xCor, yCor] == null)
+                {
+                    PlaceCavePiece();
+                }
+                xCor++;
+            }
+            yCor++;
+            xCor -= arenaWidth;
+        }
+
+        //Reset cordinates to middle
+        xCor = midX;
+        yCor = midY;
+
+        GameObject newArena = Instantiate(arena, transform.position, Quaternion.identity);
+        newArena.transform.position = new Vector3(xCor * 8, 0, yCor * 8);
+
+        Debug.Log("Success");
+    }
 
     private Direction ChangeDirection()
     {
@@ -54,10 +92,7 @@ public class CaveGenerator : MonoBehaviour
         {
             if (cave[xCor, yCor] == null)
             {
-                int RandNum = UnityEngine.Random.Range(0, cavePieces.Count);
-                CavePiece currenPiece = Instantiate(cavePieces[RandNum], transform.position, Quaternion.identity).GetComponent<CavePiece>();
-                currenPiece.transform.position = new Vector3(xCor * 8, 0, yCor * 8);
-                cave[xCor, yCor] = currenPiece;
+                PlaceCavePiece();
                 MoveCords();
             }
             else
@@ -65,6 +100,14 @@ public class CaveGenerator : MonoBehaviour
                 MoveCords();
             }
         }
+    }
+
+    private void PlaceCavePiece()
+    {
+        int RandNum = UnityEngine.Random.Range(0, cavePieces.Count);
+        CavePiece currenPiece = Instantiate(cavePieces[RandNum], transform.position, Quaternion.identity).GetComponent<CavePiece>();
+        currenPiece.transform.position = new Vector3(xCor * 8, 0, yCor * 8);
+        cave[xCor, yCor] = currenPiece;
     }
 
     private void CheckForDestruction()

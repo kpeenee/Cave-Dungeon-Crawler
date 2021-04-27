@@ -1943,6 +1943,9 @@ MonoBehaviour:
   minCorridoorLen: 1
   maxCorridoorLen: 8
   genAmount: 20
+  arenaWidth: 3
+  arenaHeight: 3
+  arena: {fileID: 3416654330638690512, guid: c1fa35be715d91a4aa3ec6c1ad76ccb5, type: 3}
 --- !u!1 &2016743436
 GameObject:
   m_ObjectHideFlags: 0
