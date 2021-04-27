@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  scoreAmount: 50
   regenHealthPerSecond: 0
   healthBar: {fileID: 5302941525089971949}
   anim: {fileID: 0}

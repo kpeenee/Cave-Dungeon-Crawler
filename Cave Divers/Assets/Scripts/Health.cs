@@ -2,16 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] float maxHealth;
     private float currentHealth;
+    [SerializeField] int scoreAmount = 0;
     [SerializeField] float regenHealthPerSecond = 0.0f;
     [SerializeField] HealthBar healthBar;
     public Animator anim;
     [SerializeField] AudioClip damageSound;
     [SerializeField] GameObject deathVFX;
+    
 
 
     private void Start()
@@ -73,6 +76,7 @@ public class Health : MonoBehaviour
             GameObject deathParticles = Instantiate(deathVFX, transform.position, Quaternion.identity);
             Destroy(deathParticles, 5.0f);
         }
+        ScoreManager.current.AddPoints(scoreAmount);
         Destroy(gameObject);
     }
 }

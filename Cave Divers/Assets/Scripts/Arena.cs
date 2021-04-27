@@ -13,8 +13,11 @@ public class Arena : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Arena Battle Start!!");
-            arenaBounds.SetActive(true);
-            OnArenaEnter();
+            if (OnArenaEnter != null)
+            {
+                arenaBounds.SetActive(true);
+                OnArenaEnter();
+            }
         }
     }
 
