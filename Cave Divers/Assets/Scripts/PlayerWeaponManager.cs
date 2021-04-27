@@ -86,7 +86,7 @@ public class PlayerWeaponManager : MonoBehaviour
         if (switchRight == true)
         {
             WeaponPickup oldWeapon = Instantiate(createPickup, transform.position + transform.forward * 2, Quaternion.identity);
-            oldWeapon.setWeapon(currentMain);
+            oldWeapon.SetWeapon(currentMain);
             Destroy(currentMain.gameObject);
 
             currentMain = Instantiate(newWeapon, mainPoint.position, Quaternion.Euler(new Vector3(-72.5f, 0f, 0f)));
@@ -96,7 +96,7 @@ public class PlayerWeaponManager : MonoBehaviour
         else
         {
             WeaponPickup oldWeapon = Instantiate(createPickup, transform.position + transform.forward * 2, Quaternion.identity);
-            oldWeapon.setWeapon(currentOff);
+            oldWeapon.SetWeapon(currentOff);
             Destroy(currentOff.gameObject);
 
             currentOff = Instantiate(newWeapon, offPoint.position, Quaternion.Euler(new Vector3(-72.5f, 0f, 0f)));

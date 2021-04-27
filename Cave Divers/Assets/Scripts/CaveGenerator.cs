@@ -13,6 +13,7 @@ public class CaveGenerator : MonoBehaviour
     [SerializeField] int arenaWidth = 3;
     [SerializeField] int arenaHeight = 3;
     [SerializeField] GameObject arena;
+    [SerializeField] GameObject endRoom;
 
     private CavePiece[,] cave = new CavePiece[50,50];
     private int xCor = 25;
@@ -37,7 +38,30 @@ public class CaveGenerator : MonoBehaviour
             }
             dir = ChangeDirection();
         }
+        PlaceEnd();
         CheckForDestruction();
+    }
+
+    private void PlaceEnd()
+    {
+        bool isPlaced = false;
+        do
+        {
+            if (xCor >= 0 && yCor >= 0 && xCor < cave.GetLength(0) && yCor < cave.GetLength(1))
+            {
+                if (cave[xCor, yCor] == null)
+                {
+                    CavePiece currenPiece = Instantiate(endRoom, transform.position, Quaternion.identity).GetComponent<CavePiece>();
+                    currenPiece.transform.position = new Vector3(xCor * 8, 0, yCor * 8);
+                    cave[xCor, yCor] = currenPiece;
+                    isPlaced = true;
+                }
+            }
+            if(isPlaced == false)
+            {
+                MoveCords();
+            }
+        } while (isPlaced == false);
     }
 
     private void CreateArena()

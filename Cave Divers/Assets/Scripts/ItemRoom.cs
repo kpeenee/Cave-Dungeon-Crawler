@@ -9,6 +9,6 @@ public class ItemRoom : MonoBehaviour
 
     private void Start()
     {
-        roomItem.setWeapon(pool.GetRandomWeaponFromPool());
+        roomItem.SetWeapon(pool.GetRandomWeaponFromPool());
     }
 }

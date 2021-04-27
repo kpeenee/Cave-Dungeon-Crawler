@@ -25,7 +25,7 @@ public class WeaponPickup : MonoBehaviour, IInteract
     {
         StartCoroutine(CheckWeapon());
     }
-    public void setWeapon(Weapon weapon)
+    public void SetWeapon(Weapon weapon)
     {
         pickupWeapon = Instantiate(weapon, transform.position, Quaternion.identity, transform);
         pickupWeapon.transform.localScale = weapon.transform.lossyScale;
@@ -41,7 +41,7 @@ public class WeaponPickup : MonoBehaviour, IInteract
         yield return new WaitForSeconds(0.3f);
         if(pickupWeapon == null)
         {
-            setWeapon(defaultWeapon);
+            SetWeapon(defaultWeapon);
         }
     }
 

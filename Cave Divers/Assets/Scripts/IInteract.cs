@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IInteract 
 {
-    GameObject gameObject { get; }
+    
     //Player interaction
     void Interact();
 

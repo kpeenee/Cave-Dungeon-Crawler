@@ -6,6 +6,9 @@ public class BillboardFX : MonoBehaviour
 {
     private void LateUpdate()
     {
-        transform.LookAt(Camera.main.transform.position);
+        if (Camera.main != null)
+        {
+            transform.LookAt(Camera.main.transform.position);
+        }
     }
 }

@@ -36,8 +36,8 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = "Score: " + currentScore;
     }
 
-    public void DestroyCurrent()
+    public static void DestroyCurrent()
     {
-        Destroy(gameObject);
+        Destroy(current.gameObject);
     }
 }

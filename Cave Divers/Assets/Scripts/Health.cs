@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class Health : MonoBehaviour
@@ -77,6 +78,13 @@ public class Health : MonoBehaviour
             Destroy(deathParticles, 5.0f);
         }
         ScoreManager.current.AddPoints(scoreAmount);
+        if(transform.tag == "Player")
+        {
+            ScoreManager.DestroyCurrent();
+            SceneManager.LoadScene(0);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
         Destroy(gameObject);
     }
 }
