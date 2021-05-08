@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEditor.AI;
-    
+using UnityEngine.AI;
+
+
 public class CaveGenerator : MonoBehaviour
 {
     [SerializeField] List<GameObject> cavePieces = new List<GameObject>();
@@ -14,6 +16,7 @@ public class CaveGenerator : MonoBehaviour
     [SerializeField] int arenaHeight = 3;
     [SerializeField] GameObject arena;
     [SerializeField] GameObject endRoom;
+    
 
     private CavePiece[,] cave = new CavePiece[50,50];
     private int xCor = 25;
@@ -24,7 +27,16 @@ public class CaveGenerator : MonoBehaviour
     private void Start()
     {
         GenerateCave();
-        NavMeshBuilder.BuildNavMesh();
+        BuildNavMesh();
+    }
+
+    private void BuildNavMesh()
+    {
+        NavMeshSurface[] surfaces = FindObjectsOfType<NavMeshSurface>();
+        for(int i = 0; i < surfaces.Length; i++)
+        {
+            surfaces[i].BuildNavMesh();
+        }
     }
 
     private void GenerateCave()
