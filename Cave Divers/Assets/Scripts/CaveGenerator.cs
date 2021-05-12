@@ -85,13 +85,19 @@ public class CaveGenerator : MonoBehaviour
         //Place Cordinates in bottom left of arena
         xCor--;
         yCor--;
+
+        int howManyPlaced = 0;
         for(int i = 0; i < arenaHeight; i++)
         {
             for(int j = 0; j < arenaWidth; j++)
             {
-                if (cave[xCor, yCor] == null)
+                if (xCor < cave.GetLength(0) && xCor >= 0 && yCor < cave.GetLength(1) && yCor >= 0)
                 {
-                    PlaceCavePiece();
+                    if (cave[xCor, yCor] == null)
+                    {
+                        PlaceCavePiece();
+                        howManyPlaced++;
+                    }
                 }
                 xCor++;
             }
@@ -103,8 +109,11 @@ public class CaveGenerator : MonoBehaviour
         xCor = midX;
         yCor = midY;
 
-        GameObject newArena = Instantiate(arena, transform.position, Quaternion.identity);
-        newArena.transform.position = new Vector3(xCor * 8, 0, yCor * 8);
+        if (howManyPlaced == arenaHeight * arenaWidth)
+        {
+            GameObject newArena = Instantiate(arena, transform.position, Quaternion.identity);
+            newArena.transform.position = new Vector3(xCor * 8, 0, yCor * 8);
+        }
 
         Debug.Log("Success");
     }
