@@ -15,6 +15,7 @@ public class WeaponPickup : MonoBehaviour, IInteract
     [SerializeField] TextMeshProUGUI weaponTitle;
     [SerializeField] TextMeshProUGUI damageText;
     [SerializeField] TextMeshProUGUI rangeText;
+    [SerializeField] TextMeshProUGUI speedText;
 
     private void Awake()
     {   
@@ -34,6 +35,7 @@ public class WeaponPickup : MonoBehaviour, IInteract
         weaponTitle.text = weaponsStats.name;
         damageText.text = "Damage:    " + weaponsStats.damage.ToString();
         rangeText.text = "Range:     " + weaponsStats.range.ToString();
+        speedText.text = "Speed:     " + weaponsStats.attackSpeed.ToString();
     }
 
     IEnumerator CheckWeapon()
