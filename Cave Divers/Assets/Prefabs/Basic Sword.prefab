@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 6de1439957e83c44e9509f424a420450, type: 2}
+  anim: {fileID: 0}
+  attackVFX: {fileID: 1045132489677174735}
 --- !u!95 &6012154217207005106
 Animator:
   serializedVersion: 3
@@ -221,8 +223,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 4786062501971959155}
     m_Modifications:
     - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+      propertyPath: TrailModule.sizeAffectsLifetime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
       propertyPath: InitialModule.startSize.minMaxState
@@ -237,44 +267,8 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
-      propertyPath: moveWithTransform
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
-      propertyPath: ShapeModule.m_Scale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
-      propertyPath: ShapeModule.m_Scale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
       value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
-      propertyPath: TrailModule.sizeAffectsLifetime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
-      propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[1].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
-      propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[1].outSlope
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
       propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[0].value
@@ -284,9 +278,25 @@ PrefabInstance:
       propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[1].value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+      propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[1].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237599845884648521, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+      propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[1].outSlope
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4578652138674432678, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
       propertyPath: m_Name
       value: Basic Sword VFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578652138674432678, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4697630136270363813, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4697630136270363813, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -301,6 +311,10 @@ PrefabInstance:
       value: 0.00978
       objectReference: {fileID: 0}
     - target: {fileID: 4697630136270363813, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4697630136270363813, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -310,14 +324,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4697630136270363813, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4697630136270363813, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4697630136270363813, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4697630136270363813, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
@@ -334,6 +340,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+--- !u!1 &1045132489677174735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4578652138674432678, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}
+  m_PrefabInstance: {fileID: 3534109281574509929}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8087048839291748812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4697630136270363813, guid: 28c64a443f300204ba2846cb310ee83d, type: 3}

@@ -8,7 +8,7 @@ public class PrimaryWeapon : Weapon
    
     [SerializeField] Animator anim;
     AudioSource attackSound;
-    
+    [SerializeField] GameObject attackVFX;
     
     private void Awake()
     {
@@ -19,6 +19,17 @@ public class PrimaryWeapon : Weapon
     {
         CheckForHit();
         attackSound.Play();
+        if(attackVFX != null)
+        {
+            StartCoroutine(PlayVFX());
+        }
+    }
+
+    IEnumerator PlayVFX()
+    {
+        attackVFX.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        attackVFX.SetActive(false);
     }
 
     private void CheckForHit()
